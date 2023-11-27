@@ -9,6 +9,41 @@ app.set("view engine", "ejs");
 //indicamos donde estan
 app.set("views", path.join(__dirname,'views'));
 
-app.listen(PORT,function(req,res){
-    console.log('listening to ${PORT}')
+//Sample BD
+let clientesApp = [
+    {
+        id: 1,
+        nombre : 'Alex',
+        apellido: 'Rivas',
+        email: 'alex@uni.eus'
+    },
+    {
+        id: 2,
+        nombre : 'Martin',
+        apellido: 'Lopez de Ipiña',
+        email: 'martin@uni.eus'
+    },
+    {
+        id: 3,
+        nombre : 'Asier',
+        apellido: 'Sainz',
+        email: 'asier@uni.eus'
+    },
+    {
+        id: 4,
+        nombre : 'Ekaitz',
+        apellido: 'Murillo',
+        email: 'ekaitz@uni.eus'
+    }
+];
+
+//introducirmos que queremos cargas, y que valores les damos
+app.get("/",function(req, res){
+    res.render('index',{
+        'titulo':'Probando EJS',
+        'clientes': clientesApp
+    });
 })
+
+app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
+   
